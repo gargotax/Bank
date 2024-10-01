@@ -20,11 +20,19 @@ namespace BaknApi.Controllers
         // POST api/<UserController>
         [HttpPost]
         [ProducesResponseType<Guid>(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<Guid>>CreateUser(CreateUserRequest request, [FromServices]ICreateUserComandHandler handler, CancellationToken cancellationToken)
         {
             CreateUserComand comand = new(request.Name);
-            var userId = await handler.HandleAsync(comand, cancellationToken);
-            return Created(string.Empty, userId);
+            try
+            {
+                var userId = await handler.HandleAsync(comand, cancellationToken);
+                return Created(string.Empty, userId);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }           
         }
 
         // PUT api/<UserController>/5
