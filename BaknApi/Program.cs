@@ -1,4 +1,8 @@
 
+using Application.CreateUserComand;
+using Domain.Repositories;
+using Infrastructure;
+
 namespace BaknApi
 {
     public class Program
@@ -13,6 +17,8 @@ namespace BaknApi
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddScoped<IUserRepository, UserRpository>();
+            builder.Services.AddScoped<ICreateUserComandHandler, CreateUserComandHandler>();
 
             var app = builder.Build();
 
