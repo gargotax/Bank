@@ -12,9 +12,15 @@ namespace Application.CreateUserComand
         }
         public async Task<Guid> HandleAsync(CreateUserComand comand, CancellationToken cancellationToken)
         {
-            User user = new(Guid.NewGuid(), comand.Name);
-
+            User user = new(Guid.NewGuid(), comand.Name, comand.NhsNumber);
+          
+            if(await _userRepository.NhsNumberAlreadyExists(user, cancellationToken))
+            {
+                throw new Exception("A user with the same NhsNumber already exists");
+            }
+            
             await _userRepository.CreateUser(user, cancellationToken);
+
             return await Task.FromResult(user.IdUser);
         }
     }

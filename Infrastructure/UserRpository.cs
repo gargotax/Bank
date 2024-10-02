@@ -13,5 +13,17 @@ namespace Infrastructure
 
             return Task.FromResult(user.IdUser);
         }
+
+        public Task<bool> NhsNumberAlreadyExists(User user, CancellationToken cancellationToken)
+        {
+            foreach (var item in _users.Values)
+            {
+                if (item.NhsNumber == user.NhsNumber)
+                {
+                    return Task.FromResult(true);
+                }               
+            }
+            return Task.FromResult(false);
+        }
     }
 }

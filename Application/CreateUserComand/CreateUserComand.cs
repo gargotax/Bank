@@ -3,10 +3,11 @@
     public class CreateUserComand
     {
         public string Name {  get;}
-        public CreateUserComand(string name)
+        public int NhsNumber { get;}
+        public CreateUserComand(string name, int nhsNumber)
         {
             Name = name;
-
+            NhsNumber = nhsNumber;
         }
     }
 }

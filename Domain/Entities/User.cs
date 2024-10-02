@@ -4,10 +4,12 @@
     {
         public Guid IdUser { get;}
         public string Name { get;}
-        public User(Guid idUser, string name)
+        public int NhsNumber { get;}
+        public User(Guid idUser, string name, int nhsNumber)
         {
             IdUser = idUser;
             Name = name;
+            NhsNumber = nhsNumber;
         }
     }
 }
