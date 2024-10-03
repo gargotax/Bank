@@ -2,6 +2,7 @@
 using Application.CreateUserComand;
 using Application.DeleteUserComand;
 using Application.GetUserComand;
+using Application.UpdateUserComand;
 using Domain.Repositories;
 using Infrastructure;
 
@@ -23,6 +24,7 @@ namespace BaknApi
             builder.Services.AddScoped<ICreateUserComandHandler, CreateUserComandHandler>();
             builder.Services.AddScoped<IGetUserComandHandler, GetUserComandHandler>();
             builder.Services.AddScoped<IDeleteUserComandHandler, DeleteUserComandHandler>();
+            builder.Services.AddScoped<IUpdateUserComandHandler, UpdateUserComandHandler>();
 
             var app = builder.Build();
 

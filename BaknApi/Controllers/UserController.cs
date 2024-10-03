@@ -1,6 +1,7 @@
 ﻿using Application.CreateUserComand;
 using Application.DeleteUserComand;
 using Application.GetUserComand;
+using Application.UpdateUserComand;
 using BaknApi.Dto;
 using BaknApi.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -53,8 +54,20 @@ namespace BaknApi.Controllers
 
         // PUT api/<UserController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult> UpdateUser([FromRoute] Guid id, UpdateUserRequest request, [FromServices]IUpdateUserComandHandler handler, CancellationToken cancellationToken)
         {
+            UpdateUserComand comand = new(id, request.Name);
+            try
+            {
+                await handler.HandleAsync(comand, cancellationToken);
+                return Ok();
+            }
+            catch(KeyNotFoundException)
+            {
+                return NotFound();
+            }
         }
 
         // DELETE api/<UserController>/5

@@ -37,5 +37,10 @@ namespace Infrastructure
             }
             return Task.FromResult(false);
         }
+        public Task UpdateUser(User user, CancellationToken cancellationToken)
+        {
+            _users[user.IdUser] = user;
+            return Task.CompletedTask;
+        }
     }
 }
