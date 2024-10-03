@@ -20,7 +20,7 @@ namespace BaknApi.Controllers
         // POST api/<UserController>
         [HttpPost]
         [ProducesResponseType<Guid>(StatusCodes.Status201Created)]
-        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<Guid>> CreateUser(CreateUserRequest request, [FromServices] ICreateUserComandHandler handler, CancellationToken cancellationToken)
         {
             CreateUserComand comand = new(request.Name, request.NhsNumber);
@@ -31,7 +31,7 @@ namespace BaknApi.Controllers
             }
             catch (Exception)
             {
-                return BadRequest();
+                return StatusCode(StatusCodes.Status500InternalServerError);
             }
             
         }
