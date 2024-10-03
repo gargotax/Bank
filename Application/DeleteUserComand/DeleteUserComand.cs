@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.GetUserComand
+namespace Application.DeleteUserComand
 {
-    public class GetUserComand
+    public class DeleteUserComand
     {
-        public Guid Id { get; }
-        public GetUserComand(Guid id)
+        public Guid Id { get;}
+        public DeleteUserComand(Guid id)
         {
             Id = id;
         }

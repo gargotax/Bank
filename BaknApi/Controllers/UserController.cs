@@ -1,4 +1,5 @@
 ﻿using Application.CreateUserComand;
+using Application.DeleteUserComand;
 using Application.GetUserComand;
 using BaknApi.Dto;
 using BaknApi.Models;
@@ -58,8 +59,12 @@ namespace BaknApi.Controllers
 
         // DELETE api/<UserController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<ActionResult> DeleteUser([FromRoute] Guid id, [FromServices]IDeleteUserComandHandler handler, CancellationToken cancellationToken)
         {
+            DeleteUserComand comand = new(id);
+            await handler.HandleAsync(comand, cancellationToken);
+            return NoContent();
         }
     }
 }

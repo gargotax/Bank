@@ -14,6 +14,12 @@ namespace Infrastructure
             return Task.FromResult(user.IdUser);
         }
 
+        public Task DeleteUserById(Guid id, CancellationToken cancellationToken)
+        {
+            _users.Remove(id);
+            return Task.CompletedTask;
+        }
+
         public Task<User?> GetUserById(Guid id, CancellationToken cancellationToken)
         {
             _users.TryGetValue(id, out var user);
