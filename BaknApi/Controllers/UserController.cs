@@ -1,4 +1,6 @@
 ﻿using Application.CreateUserComand;
+using Application.GetUserComand;
+using BaknApi.Dto;
 using BaknApi.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,9 +14,21 @@ namespace BaknApi.Controllers
     {
         // GET api/<UserController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        [ProducesResponseType<UserDto>(StatusCodes.Status200OK)]
+        [ProducesResponseType<UserDto>(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<UserDto>> GetUser([FromRoute] Guid id, [FromServices]IGetUserComandHandler handler, CancellationToken cancellationToken)
         {
-            return "value";
+            GetUserComand comand = new(id);
+            try
+            {
+                var user = await handler.HandleAsync(comand, cancellationToken);
+                UserDto userDto = new(user.IdUser, user.Name, user.NhsNumber);
+                return Ok(userDto);
+            }
+            catch (KeyNotFoundException)
+            {
+                return NotFound();
+            }
         }
 
         // POST api/<UserController>

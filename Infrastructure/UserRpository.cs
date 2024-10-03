@@ -14,6 +14,12 @@ namespace Infrastructure
             return Task.FromResult(user.IdUser);
         }
 
+        public Task<User?> GetUserById(Guid id, CancellationToken cancellationToken)
+        {
+            _users.TryGetValue(id, out var user);
+            return Task.FromResult(user);
+        }
+
         public Task<bool> NhsNumberAlreadyExists(User user, CancellationToken cancellationToken)
         {
             foreach (var item in _users.Values)

@@ -1,5 +1,6 @@
 
 using Application.CreateUserComand;
+using Application.GetUserComand;
 using Domain.Repositories;
 using Infrastructure;
 
@@ -19,6 +20,7 @@ namespace BaknApi
             builder.Services.AddSwaggerGen();
             builder.Services.AddScoped<IUserRepository, UserRpository>();
             builder.Services.AddScoped<ICreateUserComandHandler, CreateUserComandHandler>();
+            builder.Services.AddScoped<IGetUserComandHandler, GetUserComandHandler>();
 
             var app = builder.Build();
 
