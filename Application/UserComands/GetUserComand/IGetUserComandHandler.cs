@@ -1,8 +1,8 @@
 ﻿using Domain.Entities;
 
-namespace Application.GetUserComand
+namespace Application.UserComands.GetUserComand
 {
-    public interface  IGetUserComandHandler
+    public interface IGetUserComandHandler
     {
         Task<User> HandleAsync(GetUserComand comand, CancellationToken cancellationToken);
     }

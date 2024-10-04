@@ -1,6 +1,6 @@
 ﻿using Domain.Repositories;
 
-namespace Application.UpdateUserComand
+namespace Application.UserComands.UpdateUserComand
 {
     public class UpdateUserComandHandler : IUpdateUserComandHandler
     {

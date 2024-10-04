@@ -1,4 +1,4 @@
-﻿namespace Application.DeleteUserComand
+﻿namespace Application.UserComands.DeleteUserComand
 {
     public interface IDeleteUserComandHandler
     {

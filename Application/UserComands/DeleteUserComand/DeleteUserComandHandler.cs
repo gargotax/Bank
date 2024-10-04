@@ -1,6 +1,6 @@
 ﻿using Domain.Repositories;
 
-namespace Application.DeleteUserComand
+namespace Application.UserComands.DeleteUserComand
 {
     public class DeleteUserComandHandler : IDeleteUserComandHandler
     {

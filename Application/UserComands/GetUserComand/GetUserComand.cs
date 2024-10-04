@@ -1,4 +1,4 @@
-﻿namespace Application.GetUserComand
+﻿namespace Application.UserComands.GetUserComand
 {
     public class GetUserComand
     {

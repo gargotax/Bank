@@ -1,9 +1,9 @@
 ﻿using Domain.Entities;
 using Domain.Repositories;
 
-namespace Application.GetUserComand
+namespace Application.UserComands.GetUserComand
 {
-    public class GetUserComandHandler:IGetUserComandHandler
+    public class GetUserComandHandler : IGetUserComandHandler
     {
         private readonly IUserRepository _userRepository;
         public GetUserComandHandler(IUserRepository userRepository)
