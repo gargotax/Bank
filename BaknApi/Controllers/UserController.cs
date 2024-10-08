@@ -1,7 +1,7 @@
-﻿using Application.CreateUserComand;
-using Application.DeleteUserComand;
-using Application.GetUserComand;
-using Application.UpdateUserComand;
+﻿using Application.UserComands.CreateUserComand;
+using Application.UserComands.DeleteUserComand;
+using Application.UserComands.GetUserComand;
+using Application.UserComands.UpdateUserComand;
 using BaknApi.Dto;
 using BaknApi.Models;
 using Microsoft.AspNetCore.Mvc;

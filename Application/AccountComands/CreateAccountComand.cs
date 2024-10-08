@@ -1,18 +1,27 @@
-﻿namespace Application.AccountComands
+﻿using Domain.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Application.AccountComands
 {
     public class CreateAccountComand
     {
-        public Guid Id { get;}
-        public Guid Iduser { get;}
-        public decimal Balance { get;}
+        public Guid IdUser { get; set; }
         public decimal Overdraft { get;}
-        public CreateAccountComand(Guid id, Guid idUser, decimal balance, decimal overdraft)
+        public decimal Balance { get;}
+        public decimal MaxDepositAmountAllowed { get;}
+        public Account.AccountType AccountType { get;}
+        public CreateAccountComand(Guid idUser, decimal balance, Account.AccountType accountType, decimal overdraft = 0, decimal maxDepositAmountAllowed = 0)
         {
-            Id = id;
-            Iduser = idUser;
-            Balance = balance;
+            IdUser = idUser;
             Overdraft = overdraft;
-
+            Balance = balance;
+            MaxDepositAmountAllowed = maxDepositAmountAllowed;
+            AccountType = accountType;
         }
+
     }
 }

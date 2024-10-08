@@ -1,3 +1,4 @@
+using Application.AccountComands;
 using Application.UserComands.CreateUserComand;
 using Application.UserComands.DeleteUserComand;
 using Application.UserComands.GetUserComand;
@@ -26,6 +27,8 @@ namespace BaknApi
             builder.Services.AddScoped<IUpdateUserComandHandler, UpdateUserComandHandler>();
 
             builder.Services.AddScoped<IAccountRepository, AccountRepository>();
+            builder.Services.AddScoped<ICreateAccountComandHandler, CreateAccountComandHandler>();
+
 
             var app = builder.Build();
 
