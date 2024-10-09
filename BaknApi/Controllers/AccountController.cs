@@ -25,12 +25,20 @@ namespace BaknApi.Controllers
         {
             if (request.AccountType == Account.AccountType.SavingAccount)
             {
+                if(request.Overdraft != 0)
+                {
+                    return BadRequest();
+                }
                 CreateAccountComand comand = new(userId, request.MaxDepositAmountAllowed, request.AccountType);
                 Guid accountId = await handler.HandleAsync(comand, cancellationToken);
                 return Created(string.Empty, accountId);
             }
             else
             {
+                if(request.MaxDepositAmountAllowed != 0)
+                {
+                    return BadRequest(request);
+                }
                 CreateAccountComand comand = new(userId, balance: request.Balance, overdraft: request.Overdraft, accountType: request.AccountType);
                 Guid accountId = await handler.HandleAsync(comand, cancellationToken);
                 return Created(string.Empty, accountId);
